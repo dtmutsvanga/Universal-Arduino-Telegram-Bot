@@ -345,8 +345,9 @@ int UniversalTelegramBot::getUpdates(long offset)  {
       if (_debug) Serial.println("Failed to parse update, the message could be too big for the buffer");
     }
 
-    return 0;
+  // return 0;
   }
+return 0; //missing return statement
 }
 
 /***********************************************************************
