@@ -32,8 +32,12 @@ String UniversalTelegramBot::sendGetToTelegram(String command) {
 	long now;
 	bool avail;
 
-	// Connect with api.telegram.org
-	if (client->connect(HOST, SSL_PORT)) {
+	//Check if already connected with api.telegram.org. Reconnect if not.
+	if (!client->connected()) 
+			client->connect(HOST, SSL_PORT);
+	
+	// If connected, get updates 
+	if (client->connected()) {
 		if (_debug) Serial.println(".... connected to server");
 		String a="";
 		char c;
